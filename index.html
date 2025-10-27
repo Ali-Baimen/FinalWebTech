@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>TV Lite — Home</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -40,7 +41,7 @@
       <button class="btn btn-outline-primary mt-2">Learn More</button>
     </div>
     <div class="col-lg-6 col-md-12 text-center">
-      <img src="theoffice.webp" class="img-fluid rounded shadow" alt="TV illustration">
+      <img data-src="theoffice.webp" class="img-fluid rounded shadow" alt="TV illustration">
     </div>
   </div>
 </section>
@@ -49,7 +50,7 @@
   <div class="row text-center">
     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
       <div class="card bg-dark border-purple text-light h-100">
-        <img src="stranger-things-season-1-key-art.webp" class="card-img-top" alt="Stranger Things">
+        <img data-src="stranger-things-season-1-key-art.webp" class="card-img-top" alt="Stranger Things">
         <div class="card-body">
           <h5 class="card-title">Stranger Things</h5>
           <p class="card-text">Mystery, friendship, and monsters in the 80s.</p>
@@ -58,7 +59,7 @@
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
       <div class="card bg-dark border-purple text-light h-100">
-        <img src="brbad.webp" class="card-img-top" alt="Breaking Bad">
+        <img data-src="brbad.webp" class="card-img-top" alt="Breaking Bad">
         <div class="card-body">
           <h5 class="card-title">Breaking Bad</h5>
           <p class="card-text">A chemistry teacher turns to crime to provide for his family.</p>
@@ -67,7 +68,7 @@
     </div>
     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
       <div class="card bg-dark border-purple text-light h-100">
-        <img src="got.webp" class="card-img-top" alt="Game of Thrones">
+        <img data-src="got.webp" class="card-img-top" alt="Game of Thrones">
         <div class="card-body">
           <h5 class="card-title">Game of Thrones</h5>
           <p class="card-text">Epic battles and political intrigue in Westeros.</p>
@@ -93,31 +94,31 @@
     </div>
     <div class="carousel-inner rounded">
       <div class="carousel-item active">
-        <img src="friends.jpeg" class="d-block w-100" alt="Friends">
+        <img data-src="friends.jpeg" class="d-block w-100" alt="Friends">
       </div>
       <div class="carousel-item">
-        <img src="peacemaker.webp" class="d-block w-100" alt="Peacemaker">
+        <img data-src="peacemaker.webp" class="d-block w-100" alt="Peacemaker">
       </div>
       <div class="carousel-item">
-        <img src="thewitcher.webp" class="d-block w-100" alt="The Witcher">
+        <img data-src="thewitcher.webp" class="d-block w-100" alt="The Witcher">
       </div>
       <div class="carousel-item">
-        <img src="brbad.webp" class="d-block w-100" alt="Breaking Bad">
+        <img data-src="brbad.webp" class="d-block w-100" alt="Breaking Bad">
       </div>
       <div class="carousel-item">
-        <img src="got.webp" class="d-block w-100" alt="Game of Thrones">
+        <img data-src="got.webp" class="d-block w-100" alt="Game of Thrones">
       </div>
       <div class="carousel-item">
-        <img src="theoffice.webp" class="d-block w-100" alt="Office">
+        <img data-src="theoffice.webp" class="d-block w-100" alt="Office">
       </div>
       <div class="carousel-item">
-        <img src="doctorhaus.webp" class="d-block w-100" alt="Doctor House">
+        <img data-src="doctorhaus.webp" class="d-block w-100" alt="Doctor House">
       </div>
       <div class="carousel-item">
-        <img src="forever.webp" class="d-block w-100" alt="Forever">
+        <img data-src="forever.webp" class="d-block w-100" alt="Forever">
       </div>
       <div class="carousel-item">
-        <img src="stranger-things-season-1-key-art.webp" class="d-block w-100" alt="The Witcher">
+        <img data-src="stranger-things-season-1-key-art.webp" class="d-block w-100" alt="The Witcher">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#showCarousel" data-bs-slide="prev">
@@ -137,17 +138,27 @@
 <div id="popup">
   <div id="popupContent">
     <span id="closePopup">&times;</span>
-    <h2>Subscribe to TV Lite</h2>
-    <p>Get updates on your favorite shows!</p>
-    <input type="text" id="nameInput" placeholder="Your name">
-    <input type="email" id="emailInput" placeholder="Your email">
+    <h2 id="popupTitle">Subscribe to TV Lite</h2>
+    <p id="popupDesc">Get updates on your favorite shows!</p>
+    <input type="text" id="popupName" placeholder="Your name" required>
+    <input type="email" id="popupEmail" placeholder="Your email" required>
     <button id="submitPopup">Subscribe</button>
   </div>
 </div>
 
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
+<script src="jquery-tasks.js"></script>
+
+<div id="highlightWidget">
+  <button id="highlightToggle">🔍</button>
+  <div id="highlightBox">
+    <input id="highlightInput" type="text" placeholder="Highlight text...">
+  </div>
+</div>
+
 
 </body>
 </html>
