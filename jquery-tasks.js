@@ -235,54 +235,77 @@ $(window).on("scroll",animateCounters);
 animateCounters();
 
 //Task 6 
-$("#submitPopup").on("click", function(e){
+$("#submitPopup").on("click", function (e) {
   e.preventDefault();
+
   const btn = $(this);
   const originalText = btn.text();
+  const name = $("#popupName").val().trim();
+  const email = $("#popupEmail").val().trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if ($(".spinner").length === 0) {
-    $("<style>")
+  $(".spinner").remove();
+
+  if (!name) {
+    showToast("Please write your name.");
+    return;
+  }
+
+  if (!email) {
+    showToast("Please write your email.");
+    return;
+  }
+
+  if (!emailPattern.test(email)) {
+    showToast("Email structure is not correct.");
+    return;
+  }
+
+  if ($(".spinner-style").length === 0) {
+    $("<style class='spinner-style'>")
       .text(`
         .spinner {
-          display:inline-block;
-          width:14px;
-          height:14px;
-          border:2px solid #fff;
-          border-top:2px solid transparent;
-          border-radius:50%;
-          animation:spin 0.8s linear infinite;
-          margin-right:8px;
-          vertical-align:middle;
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          border: 2px solid #fff;
+          border-top: 2px solid transparent;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+          margin-right: 8px;
+          vertical-align: middle;
         }
         @keyframes spin {
-          0%{transform:rotate(0deg);}
-          100%{transform:rotate(360deg);}
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
       `)
       .appendTo("head");
   }
 
   btn.prop("disabled", true)
-     .html("<span class='spinner'></span> Please wait...")
-     .css({
-       opacity:"0.7",
-       cursor:"not-allowed",
-       background:"#9d4edd"
-     });
+    .html("<span class='spinner'></span> Please wait...")
+    .css({
+      opacity: "0.7",
+      cursor: "not-allowed",
+      background: "#9d4edd"
+    });
 
-  setTimeout(function(){
+  setTimeout(function () {
     btn.prop("disabled", false)
-       .text(originalText)
-       .css({
-         opacity:"1",
-         cursor:"pointer",
-         background:"#6a0297"
-       });
-    showToast("Subscription successful!");
+      .text(originalText)
+      .css({
+        opacity: "1",
+        cursor: "pointer",
+        background: "#6a0297"
+      });
 
-    $("#popup").fadeOut(300); 
+    showToast(" Subscription successful!");
+    $("#popup").fadeOut(300);
+    $("#popupName, #popupEmail").val("");
   }, 3000);
 });
+
 
 //Task 7
 function showToast(message) {
@@ -350,7 +373,23 @@ function lazyLoadImages(){
 }
 $(window).on("scroll",lazyLoadImages);
 lazyLoadImages();
+});
+ $(document).on("click", ".navbar-nav .nav-link", function() {
+    if ($(".navbar-collapse").hasClass("show")) {
+      $(".navbar-collapse").collapse("hide");
+    }
+  });
+$(document).ready(function () {
+  const toggle = $("#themeToggle");
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  $("body").addClass(savedTheme + "-mode");
+  toggle.prop("checked", savedTheme === "light");
 
-
+  toggle.on("change", function () {
+    const isLight = $(this).is(":checked");
+    $("body").removeClass("light-mode dark-mode")
+             .addClass(isLight ? "light-mode" : "dark-mode");
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  });
 });
 

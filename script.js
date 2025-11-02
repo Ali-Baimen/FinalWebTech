@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   for (let i = 0; i < genres.length; i++) {
     const li = document.createElement("li");
-    li.textContent = `🎬 ${genres[i]}`;
+    li.textContent = ` ${genres[i]}`;
     li.style.color = "#bb86fc";
     list.appendChild(li);
   }
@@ -417,3 +417,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+

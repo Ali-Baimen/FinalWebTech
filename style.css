@@ -124,6 +124,10 @@ include an image, title, text, and a button
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
+.card-title {
+  color: #bb86fc !important;
+}
+
 .card-row {
   gap: 20px;
 }
@@ -353,7 +357,7 @@ include an image, title, text, and a button
 
 .show-card img {
   width: 100%;
-  height: 200px;
+  height: 100px;
   object-fit: cover;
 }
 
@@ -562,6 +566,7 @@ footer a:hover {
   height: 60vh;        
   object-fit: cover;
   border-radius: 10px;
+  object-position: center;
 }
 
 .carousel-control-prev,
@@ -611,4 +616,86 @@ footer a:hover {
 .navbar-dark .navbar-nav .nav-link.active{color:#ffffff;border-bottom:2px solid #6a0297;}
 /* JS Task 1 CSS */
 .is-invalid { border-color: #dc3545 !important; }
+
+/* THEME TOGGLE SWITCH */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 32px;
+  margin-left: 15px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #444;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #9d4edd;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+/* Light and Dark mode colors */
+body.light-mode {
+  background-color: #f8f8f8;
+  color: #111;
+}
+
+body.light-mode nav, 
+body.light-mode footer {
+  background-color: #e9e9e9 ;
+  border-color: #6a0297 ;
+}
+
+body.light-mode .card, 
+body.light-mode .show-card {
+  background-color: #ffffff ;
+  color: #111;
+  border-color: #6a0297 ;
+}
+
+body.dark-mode {
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+}
+
+/* === Theme-specific overrides === */
+body.dark-mode .page-container {
+  background-color: #111; /* dark container background */
+  color: #e0e0e0;
+}
+
+body.light-mode .page-container {
+  background-color: #f9f9f9; /* light container background */
+  color: #111;
+}
 
