@@ -5,6 +5,8 @@
   <title>TV Lite — Shows</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,11 +27,12 @@
       <span class="slider round"></span>
     </label>
     </div>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" id="navLinks">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link active" href="shows.html">Shows</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+        <li class="nav-item"><a class="nav-link" href="signin.html">Log in</a></li>
       </ul>
     </div>
   </div>
@@ -45,77 +48,161 @@
     <p>Discover a wide selection of popular and trending TV shows.</p>
 
     <div class="show-grid">
-      <div class="show-card">
-        <img data-src="stranger-things-season-1-key-art.webp" alt="Stranger Things">
-        <div class="show-content">
-          <h3>Stranger Things</h3>
-          <p>Mystery, friendship, and monsters in the 80s.</p>
-        </div>
-      </div>
+      <div class="show-grid">
+  <div class="show-card" data-id="tt4574334" style="cursor:pointer;">
+    <img data-src="images/stranger-things-season-1-key-art.webp" alt="Stranger Things">
+    <div class="show-content">
+      <h3>Stranger Things</h3>
+      <p class="text-color1">Mystery, friendship, and monsters in the 80s.</p>
+    </div>
+  </div>
 
-      <div class="show-card">
-        <img data-src="brbad.webp" alt="Breaking Bad">
-        <div class="show-content">
-          <h3>Breaking Bad</h3>
-          <p>A chemistry teacher turns to crime to provide for his family.</p>
-        </div>
-      </div>
+  <div class="show-card" data-id="tt0903747" style="cursor:pointer;">
+    <img data-src="images/brbad.webp" alt="Breaking Bad">
+    <div class="show-content">
+      <h3>Breaking Bad</h3>
+      <p class="text-color1">A chemistry teacher turns to crime to provide for his family.</p>
+    </div>
+  </div>
 
-      <div class="show-card">
-        <img data-src="got.webp" alt="Game of Thrones">
-        <div class="show-content">
-          <h3>Game of Thrones</h3>
-          <p>Epic battles and political intrigue in Westeros.</p>
-        </div>
-      </div>
+  <div class="show-card" data-id="tt0944947" style="cursor:pointer;">
+    <img data-src="images/got.webp" alt="Game of Thrones">
+    <div class="show-content">
+      <h3>Game of Thrones</h3>
+      <p class="text-color1">Epic battles and political intrigue in Westeros.</p>
+    </div>
+  </div>
 
-      <div class="show-card">
-        <img data-src="doctorhaus.webp" alt="Doctor House">
-        <div class="show-content">
-          <h3>Doctor House</h3>
-          <p>Very Interesting Doctor with attitudes</p>
-        </div>
-      </div>
+  <div class="show-card" data-id="tt0412142" style="cursor:pointer;">
+    <img data-src="images/doctorhaus.webp" alt="Doctor House">
+    <div class="show-content">
+      <h3>Doctor House</h3>
+      <p class="text-color1">Very Interesting Doctor with attitudes</p>
+    </div>
+  </div>
 
-      <div class="show-card">
-        <img data-src="peacemaker.webp" alt="Peacemaker">
-        <div class="show-content">
-          <h3>Peacemaker</h3>
-          <p>Incredible show about man who wants to be superhero with their friends.</p>
-        </div>
-      </div>
+  <div class="show-card" data-id="tt13146488" style="cursor:pointer;">
+    <img data-src="images/peacemaker.webp" alt="Peacemaker">
+    <div class="show-content">
+      <h3>Peacemaker</h3>
+      <p class="text-color1">Incredible show about man who wants to be superhero with their friends.</p>
+    </div>
+  </div>
 
-      <div class="show-card">
-        <img data-src="forever.webp" alt="Forever">
-        <div class="show-content">
-          <h3>Forever</h3>
-          <p>A story about a man who became immortal.</p>
-        </div>
-      </div>
+  <div class="show-card" data-id="tt3487382" style="cursor:pointer;">
+    <img data-src="images/forever.webp" alt="Forever">
+    <div class="show-content">
+      <h3>Forever</h3>
+      <p class="text-color1">A story about a man who became immortal.</p>
+    </div>
+  </div>
 
-      <div class="show-card">
-        <img data-src="friends.jpeg" alt="Friends">
-        <div class="show-content">
-          <h3>Friends</h3>
-          <p>Follow six friends navigating life and love in New York City.</p>
-        </div>
-      </div>
+  <div class="show-card" data-id="tt0108778" style="cursor:pointer;">
+    <img data-src="images/friends.jpeg" alt="Friends">
+    <div class="show-content">
+      <h3>Friends</h3>
+      <p class="text-color1">Follow six friends navigating life and love in New York City.</p>
+    </div>
+  </div>
 
-      <div class="show-card">
-        <img data-src="thewitcher.webp" alt="The Witcher">
-        <div class="show-content">
-          <h3>The Witcher</h3>
-          <p>Monster hunting, destiny, and political intrigue.</p>
-        </div>
-      </div>
+  <div class="show-card" data-id="tt5180504" style="cursor:pointer;">
+    <img data-src="images/thewitcher.webp" alt="The Witcher">
+    <div class="show-content">
+      <h3>The Witcher</h3>
+      <p class="text-color1">Monster hunting, destiny, and political intrigue.</p>
+    </div>
+  </div>
 
-      <div class="show-card">
-        <img data-src="theoffice.webp" alt="The Office">
-        <div class="show-content">
-          <h3>The Office</h3>
-          <p>A hilarious look at office life and quirky coworkers.</p>
-        </div>
-      </div>
+  <div class="show-card" data-id="tt0386676" style="cursor:pointer;">
+    <img data-src="images/theoffice.webp" alt="The Office">
+    <div class="show-content">
+      <h3>The Office</h3>
+      <p class="text-color1">A hilarious look at office life and quirky coworkers.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt1190634" style="cursor:pointer;">
+    <img data-src="images/theboys.webp" alt="The Boys">
+    <div class="show-content">
+      <h3>The Boys</h3>
+      <p class="text-color1">Superheroes behaving badly in a gritty, satirical world.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt1475582" style="cursor:pointer;">
+    <img data-src="images/sherlock.jpeg" alt="Sherlock">
+    <div class="show-content">
+      <h3>Sherlock</h3>
+      <p class="text-color1">A modern retelling of Sherlock Holmes solving complex crimes in London.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt8111088" style="cursor:pointer;">
+    <img data-src="images/mandalorian.jpeg" alt="The Mandalorian">
+    <div class="show-content">
+      <h3>The Mandalorian</h3>
+      <p class="text-color1">A bounty hunter explores the galaxy after the fall of the Empire.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt6468322" style="cursor:pointer;">
+    <img data-src="images/moneyheist.jpeg" alt="Money Heist">
+    <div class="show-content">
+      <h3>Money Heist</h3>
+      <p class="text-color1">Criminal masterminds execute daring heists in this thrilling Spanish series.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt3581920" style="cursor:pointer;">
+    <img data-src="images/lastofus.jpeg" alt="The Last of Us">
+    <div class="show-content">
+      <h3>The Last of Us</h3>
+      <p class="text-color1">Survivors navigate a post-apocalyptic world of infected chaos.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt9140554" style="cursor:pointer;">
+    <img data-src="images/loki.jpeg" alt="Loki">
+    <div class="show-content">
+      <h3>Loki</h3>
+      <p class="text-color1">The god of mischief bends timelines and realities in this Marvel adventure.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt13443470" style="cursor:pointer;">
+    <img data-src="images/wednesday.jpeg" alt="Wednesday">
+    <div class="show-content">
+      <h3>Wednesday</h3>
+      <p class="text-color1">Wednesday Addams discovers dark secrets at Nevermore Academy.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt10919420" style="cursor:pointer;">
+    <img data-src="images/squidgame.jpeg" alt="Squid Game">
+    <div class="show-content">
+      <h3>Squid Game</h3>
+      <p class="text-color1">Hundreds fight for survival and fortune through deadly childhood games.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt3032476" style="cursor:pointer;">
+    <img data-src="images/bettercallsaul.jpeg" alt="Better Call Saul">
+    <div class="show-content">
+      <h3>Better Call Saul</h3>
+      <p class="text-color1">A lawyer’s transformation into the morally flexible Saul Goodman.</p>
+    </div>
+  </div>
+
+  <div class="show-card" data-id="tt7366338" style="cursor:pointer;">
+    <img data-src="images/chernobyl.jpeg" alt="Chernobyl">
+    <div class="show-content">
+      <h3>Chernobyl</h3>
+      <p class="text-color1">A haunting dramatization of the 1986 nuclear disaster and its heroes.</p>
+    </div>
+  </div>
+</div>
+
+</div>
     </div>
   </section>
 <section class="container mt-5 text-center" id="ratingSection">
@@ -138,15 +225,36 @@
   <footer class="footer-section">
     <p>&copy; 2025 TV Shows. All rights reserved.</p>
   </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<script src="script.js"></script>
-<script src="jquery-tasks.js"></script>
+
+<script src="java/jquery-tasks.js"></script>
+<script src="java/account.js"></script>
+<script src="java/script.js"></script>
+<script src="java/api.js"></script>
 
 <div id="highlightWidget">
   <button id="highlightToggle">🔍</button>
   <div id="highlightBox">
     <input id="highlightInput" type="text" placeholder="Highlight text...">
+  </div>
+</div>
+
+<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-light border-purple">
+      <div class="modal-header">
+        <h5 class="modal-title text-purple" id="showModalLabel"></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img id="showPoster" src="" alt="" class="img-fluid mb-3 rounded" style="max-height: 400px;">
+        <p><strong> IMDb Rating:</strong> <span id="showRating"></span></p>
+        <p><strong> Genre:</strong> <span id="showGenre"></span></p>
+        <p><strong> Actors:</strong> <span id="showActors"></span></p>
+        <p><strong> Plot:</strong> <span id="showPlot"></span></p>
+      </div>
+    </div>
   </div>
 </div>
 

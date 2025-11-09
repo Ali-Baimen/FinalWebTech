@@ -374,11 +374,12 @@ function lazyLoadImages(){
 $(window).on("scroll",lazyLoadImages);
 lazyLoadImages();
 });
- $(document).on("click", ".navbar-nav .nav-link", function() {
-    if ($(".navbar-collapse").hasClass("show")) {
-      $(".navbar-collapse").collapse("hide");
-    }
-  });
+ $(document).on("click", ".navbar-nav .nav-link:not(.dropdown-toggle)", function() {
+  if ($(".navbar-collapse").hasClass("show")) {
+    $(".navbar-collapse").collapse("hide");
+  }
+});
+
 $(document).ready(function () {
   const toggle = $("#themeToggle");
   const savedTheme = localStorage.getItem("theme") || "dark";

@@ -22,11 +22,12 @@
       <span class="slider round"></span>
     </label>
     </div>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" id="navLinks">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="shows.html">Shows</a></li>
         <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="support.html">Support</a></li>
+        <li class="nav-item"><a class="nav-link" href="signin.html">Log in</a></li>
       </ul>
     </div>
   </div>
@@ -36,16 +37,7 @@
 <main class="container mt-5">
   <h1 class="title-decor mb-4">About TV Lite</h1>
   <div class="row">
-    <div class="col-md-6 mb-4">
-      <div class="p-3 bg-dark border-purple rounded">
-        <p>We love tidy UI and quick discovery. Minimal pages, maximum clarity.</p>
-        <ul>
-          <li>Readable, focused layout</li>
-          <li>Two photos on Home, more team photos here</li>
-          <li>Fast to publish for assignments</li>
-        </ul>
-      </div>
-    </div>
+
     <div id="statsSection" style="text-align:center; margin-top:40px;">
   <h2 style="color:#bb86fc;">Our Achievements</h2>
   <div>
@@ -65,11 +57,11 @@
     <div class="col-md-6 mb-4">
       <div class="row g-4">
         <div class="col-lg-6 text-center">
-          <img data-src="5332749631324553378.jpg" class="img-fluid rounded">
+          <img data-src="images/ali.jpg" class="img-fluid rounded">
           <p class="mt-2"><strong>Baimen Ali</strong><br>Created home and shows pages</p>
         </div>
         <div class="col-lg-6 text-center">
-          <img data-src="5366070009081755819.jpg" class="img-fluid rounded">
+          <img data-src="images/damir.jpg" class="img-fluid rounded">
           <p class="mt-2"><strong>Yerbolatov Damir</strong><br>Created about and support pages</p>
         </div>
       </div>
@@ -100,8 +92,11 @@
 <button id="colorBtn">Change Background</button>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
-<script src="jquery-tasks.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="java/jquery-tasks.js"></script>
+<script src="java/account.js"></script>
+<script src="java/script.js"></script>
 
 <div id="highlightWidget">
   <button id="highlightToggle">🔍</button>

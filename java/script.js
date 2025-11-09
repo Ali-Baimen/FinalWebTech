@@ -1,37 +1,51 @@
-//Task 1
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("supportForm");
-  if (!form) return;
+  const stars = document.querySelectorAll(".star");
+  const msg = document.getElementById("ratingMessage");
+  const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!stars.length) return;
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-    const msg = document.getElementById("formMsg");
-    msg.classList.remove("text-success", "text-warning", "text-danger");
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
-
-    if (!name) {
-      msg.textContent = "Please enter your name!";
-      msg.classList.add("text-danger");
-    } else if (!email) {
-      msg.textContent = "Please enter your email!";
-      msg.classList.add("text-danger");
-    } else if (!emailPattern.test(email)) {
-      msg.textContent = "Please enter a valid email address!";
-      msg.classList.add("text-danger");
-    } else if (!message) {
-      msg.textContent = "Please write your message!";
-      msg.classList.add("text-danger");
-    } else {
-      msg.textContent = "Sent!";
-      msg.classList.add("text-success");
-      form.reset();
+  if (loggedUser) {
+    const userRatings = JSON.parse(localStorage.getItem("userRatings")) || {};
+    const savedRating = userRatings[loggedUser.email];
+    if (savedRating) {
+      stars.forEach((s, i) => {
+        s.classList.toggle("bi-star", i >= savedRating);
+        s.classList.toggle("bi-star-fill", i < savedRating);
+        s.style.color = i < savedRating ? "#bb86fc" : "#777";
+      });
+      msg.textContent = `You rated us ${savedRating} star${savedRating > 1 ? "s" : ""}!`;
+      msg.style.color = "#bb86fc";
+      msg.style.fontWeight = "bold";
     }
+  }
+
+  stars.forEach(star => {
+    star.addEventListener("click", () => {
+      const value = parseInt(star.dataset.value);
+
+      stars.forEach((s, i) => {
+        s.classList.toggle("bi-star", i >= value);
+        s.classList.toggle("bi-star-fill", i < value);
+        s.style.color = i < value ? "#bb86fc" : "#777";
+      });
+
+      msg.textContent = `You rated us ${value} star${value > 1 ? "s" : ""}!`;
+      msg.style.color = "#bb86fc";
+      msg.style.fontWeight = "bold";
+
+      if (loggedUser) {
+        const userRatings = JSON.parse(localStorage.getItem("userRatings")) || {};
+        userRatings[loggedUser.email] = value;
+        localStorage.setItem("userRatings", JSON.stringify(userRatings));
+      } else {
+        msg.textContent = "Please log in to save your rating.";
+        msg.style.color = "orange";
+      }
+    });
   });
 });
+
+
 //Task 2
 document.addEventListener("DOMContentLoaded", () => {
   const items = document.querySelectorAll(".accordion-item");
@@ -168,13 +182,18 @@ document.addEventListener("DOMContentLoaded", () => {
 //Task 4 
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("colorBtn");
+  if (!btn) return;
 
-  if (!btn) {
-    console.warn("colorBtn not found on this page. Add <button id=\"colorBtn\">Change Background</button> to your HTML.");
-    return;
-  }
 
-  const colors = ["#0d0d0d", "#1a3c1a", "#228B22", "#32CD32", "#FFD700", "#FFF44F"];
+  const colors = [
+    "#0d0d0d",  // black
+    "#1a3c1a",  // dark forest green
+    "#228B22",  // medium green
+    "#32CD32",  // lime
+    "#FFD700",  // gold
+    "#FFF44F"   // bright yellow
+  ];
+
   let i = 0;
 
   Object.assign(btn.style, {
@@ -186,16 +205,20 @@ document.addEventListener("DOMContentLoaded", () => {
     cursor: "pointer",
     fontWeight: "bold",
     margin: "20px auto",
-    display: "block"
+    display: "block",
+    transition: "background 0.3s ease"
   });
 
   btn.addEventListener("click", () => {
     const next = colors[i];
-    document.documentElement.style.setProperty("--bg", next);
-    console.log("Background set to:", next);
+    document.body.style.backgroundColor = next;
+    document.body.style.transition = "background-color 0.8s ease";
+    console.log("Background changed to:", next);
+
     i = (i + 1) % colors.length;
   });
 });
+
 //Task 5
 document.addEventListener("DOMContentLoaded", () => {
   const dateTimeBlock = document.getElementById("dateTimeBlock");
@@ -324,12 +347,11 @@ document.addEventListener("DOMContentLoaded", () => {
       message = "Good Evening , relax with your favorite series!";
       break;
     default:
-      message = "Good Night , time for some late-night TV!";
+      message = "Good late time of a day , time for some late night TV!";
   }
 
   greeting.textContent = message;
 });
-//JAVASCRIPT ADVANCED CONCEPTS
 
 //OBJECTS AND METHODS
 document.addEventListener("DOMContentLoaded", () => {
@@ -349,51 +371,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(infoBox);
 });
 
-
-//ARRAYS AND LOOPS
-document.addEventListener("DOMContentLoaded", () => {
-  const genres = ["Action", "Comedy", "Drama", "Fantasy", "Sci-Fi", "Mystery"];
-  const genreContainer = document.createElement("div");
-  genreContainer.className = "text-center mt-4";
-
-  const title = document.createElement("h4");
-  title.textContent = "Popular Genres:";
-  title.style.color = "#bb86fc";
-  genreContainer.appendChild(title);
-
-  const list = document.createElement("ul");
-  list.className = "list-unstyled";
-
-  for (let i = 0; i < genres.length; i++) {
-    const li = document.createElement("li");
-    li.textContent = ` ${genres[i]}`;
-    li.style.color = "#bb86fc";
-    list.appendChild(li);
-  }
-
-  genreContainer.appendChild(list);
-  document.body.appendChild(genreContainer);
-});
-
-
-//HIGHER-ORDER FUNCTION 
-document.addEventListener("DOMContentLoaded", () => {
-  const shows = ["Stranger Things", "Breaking Bad", "Friends", "The Witcher"];
-  const upperShows = shows.map(show => show.toUpperCase());
-
-  console.log("Uppercase Shows:", upperShows);
-
-  const mappedContainer = document.createElement("div");
-  mappedContainer.className = "text-center mt-4";
-  mappedContainer.style.color = "#bb86fc";
-  mappedContainer.innerHTML = `<strong>Mapped Show Titles:</strong><br>${upperShows.join(" • ")}`;
-  document.body.appendChild(mappedContainer);
-});
-
-
 //PLAY SOUND
 document.addEventListener("DOMContentLoaded", () => {
-  const soundFile = "click.mp3";
+  const soundFile = "Sound/click.mp3";
   const sound = new Audio(soundFile);
   const bgBtn = document.getElementById("colorBtn");
   if (bgBtn) {
