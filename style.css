@@ -753,3 +753,22 @@ body.light-mode textarea::placeholder {
 body {
   transition: background-color 1s ease, color 0.5s ease;
 }
+
+body.light-mode .modal-content,
+body.light-mode .modal-header,
+body.light-mode .modal-body {
+  background-color: #ffffff !important;
+  color: #111 !important;
+  border-color: #6a0297 !important;
+}
+
+body.light-mode .modal-title {
+  color: #6a0297 !important;
+  border-bottom: 2px solid #bb86fc;
+}
+
+body.light-mode .modal-body p,
+body.light-mode .modal-body span,
+body.light-mode .modal-body small {
+  color: #333 !important;
+}
