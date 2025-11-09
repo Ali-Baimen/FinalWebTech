@@ -1,5 +1,4 @@
 # TV Shows
-
 TV Lite is a responsive front-end website created as part of a coursework project.  
 It showcases a collection of TV shows with a modern dark/light theme, interactive UI components, and form handling using JavaScript and jQuery.
 

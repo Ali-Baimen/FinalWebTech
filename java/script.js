@@ -1,3 +1,98 @@
+//Task 1
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("supportForm");
+  if (!form) return;
+
+  const messageInput = document.getElementById("message");
+  const charCount = document.getElementById("charCount");
+
+  
+  messageInput.addEventListener("input", () => {
+    const len = messageInput.value.length;
+    charCount.textContent = `${len} / 500`;
+
+
+    charCount.style.color = len > 450 ? "#bb86fc" : "#999";
+  });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = messageInput.value.trim();
+    const msg = document.getElementById("formMsg");
+    msg.classList.remove("text-success", "text-warning", "text-danger");
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
+
+    if (!name) {
+      msg.textContent = "Please enter your name!";
+      msg.classList.add("text-danger");
+    } else if (!email) {
+      msg.textContent = "Please enter your email!";
+      msg.classList.add("text-danger");
+    } else if (!emailPattern.test(email)) {
+      msg.textContent = "Please enter a valid email address!";
+      msg.classList.add("text-danger");
+    } else if (!message) {
+      msg.textContent = "Please write your message!";
+      msg.classList.add("text-danger");
+    } else {
+      msg.textContent = "Sent!";
+      msg.classList.add("text-success");
+      form.reset();
+      charCount.textContent = "0 / 500"; 
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const stars = document.querySelectorAll(".star");
+  const msg = document.getElementById("ratingMessage");
+  const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!stars.length) return;
+
+  
+  if (loggedUser) {
+    const userRatings = JSON.parse(localStorage.getItem("userRatings")) || {};
+    const savedRating = userRatings[loggedUser.email];
+    if (savedRating) {
+      stars.forEach((s, i) => {
+        s.classList.toggle("bi-star", i >= savedRating);
+        s.classList.toggle("bi-star-fill", i < savedRating);
+        s.style.color = i < savedRating ? "#bb86fc" : "#777";
+      });
+      msg.textContent = `You rated us ${savedRating} star${savedRating > 1 ? "s" : ""}!`;
+      msg.style.color = "#bb86fc";
+      msg.style.fontWeight = "bold";
+    }
+  }
+
+
+  stars.forEach(star => {
+    star.addEventListener("click", () => {
+      const value = parseInt(star.dataset.value);
+
+      stars.forEach((s, i) => {
+        s.classList.toggle("bi-star", i >= value);
+        s.classList.toggle("bi-star-fill", i < value);
+        s.style.color = i < value ? "#bb86fc" : "#777";
+      });
+
+      msg.textContent = `You rated us ${value} star${value > 1 ? "s" : ""}!`;
+      msg.style.color = "#bb86fc";
+      msg.style.fontWeight = "bold";
+
+      if (loggedUser) {
+        const userRatings = JSON.parse(localStorage.getItem("userRatings")) || {};
+        userRatings[loggedUser.email] = value;
+        localStorage.setItem("userRatings", JSON.stringify(userRatings));
+      } else {
+        msg.textContent = "Please log in to save your rating.";
+        msg.style.color = "orange";
+      }
+    });
+  });
+});
 document.addEventListener("DOMContentLoaded", () => {
   const stars = document.querySelectorAll(".star");
   const msg = document.getElementById("ratingMessage");
@@ -395,6 +490,26 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("mouseout", () => {
       card.style.transform = "scale(1)";
     });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const messageInput = document.getElementById("message");
+  const charCount = document.getElementById("charCount");
+  if (!messageInput || !charCount) return;
+
+  messageInput.addEventListener("input", () => {
+    const currentLength = messageInput.value.length;
+    charCount.textContent = `${currentLength} / 500`;
+
+    // Optional visual feedback
+    if (currentLength >= 480) {
+      charCount.style.color = "red";
+    } else if (currentLength >= 300) {
+      charCount.style.color = "#bb86fc";
+    } else {
+      charCount.style.color = "#666";
+    }
   });
 });
 
